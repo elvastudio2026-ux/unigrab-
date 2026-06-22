@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Titan+One&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-uni-green: #2B4B3B;
+  --color-uni-cream: #F4EBD0;
+  --color-uni-yellow: #EAB64D;
+  --color-uni-red: #D85640;
+  --color-uni-dark: #1A2E24;
+  --color-uni-teal: #2A5A53;
+
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Titan One", ui-serif, Georgia, serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-uni-cream);
+  color: var(--color-uni-green);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.text-stroke-cream {
+  -webkit-text-stroke: 2px var(--color-uni-cream);
+  color: var(--color-uni-green);
+}
+
+.text-shadow-solid {
+  text-shadow: 4px 4px 0px var(--color-uni-dark);
+}
+
+.bg-pattern {
+  background-image: radial-gradient(var(--color-uni-cream) 2px, transparent 2px);
+  background-size: 40px 40px;
+  opacity: 0.05;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes spin-slow {
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* Base resets */
+.glass, .glass-dark {
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+}
+

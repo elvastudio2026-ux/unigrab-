@@ -1,0 +1,6 @@
+{
+  "name": "Unigrab",
+  "description": "Premium fast-food restaurant in Bouzareah, Algiers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
