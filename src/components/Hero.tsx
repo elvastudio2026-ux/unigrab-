@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import heroImg from '../assets/images/premium_burger_hero_1782061608265.jpg';
 
 export function Hero() {
   return (
@@ -25,9 +26,12 @@ export function Hero() {
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ type: "spring", bounce: 0.4, delay: 0.2 }}
-            src="/src/assets/images/premium_burger_hero_1782061608265.jpg" 
+            src={heroImg}
             alt="Burger Unigrab" 
             className="w-[80%] md:w-full relative z-10 object-cover rounded-[3rem] border-8 border-uni-cream shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800&h=600';
+            }}
           />
           
           {/* Badge */}

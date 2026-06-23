@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Plus, Minus, Trash2 } from 'lucide-react';
+import { X, Plus, Minus, Trash2, ShoppingCart } from 'lucide-react';
 import { useCart } from '../CartContext';
 
 export function CartDrawer() {
@@ -43,7 +43,7 @@ export function CartDrawer() {
               {items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center text-gray-500 space-y-4">
                   <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046786.png" className="w-12 h-12 opacity-50" alt="Empty Cart" />
+                    <ShoppingCart className="w-12 h-12 text-gray-400" />
                   </div>
                   <p className="text-lg">Votre panier est vide.</p>
                   <button 
@@ -65,7 +65,15 @@ export function CartDrawer() {
                         exit={{ opacity: 0, scale: 0.95, height: 0, marginBottom: 0 }}
                         className="flex gap-4 bg-gray-50 p-4 rounded-2xl"
                       >
-                        <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-xl shadow-sm" />
+                        <img 
+                          loading="lazy" 
+                          src={item.image} 
+                          alt={item.name} 
+                          className="w-20 h-20 object-cover rounded-xl shadow-sm" 
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop';
+                          }}
+                        />
                         <div className="flex-1 flex flex-col">
                           <div className="flex justify-between items-start">
                             <h4 className="font-bold text-uni-dark leading-tight">{item.name}</h4>

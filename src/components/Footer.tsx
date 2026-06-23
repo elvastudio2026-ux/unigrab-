@@ -35,6 +35,18 @@ export function Footer() {
               <li>Bouzareah 16032</li>
               <li>Alger - Algérie</li>
             </ul>
+            <div className="mt-8">
+              <h4 className="font-display text-xl mb-4 text-uni-cream uppercase tracking-wide">Suivez-nous</h4>
+              <a 
+                href="https://www.instagram.com/unigrab_/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-uni-yellow text-white hover:text-uni-dark transition-all"
+                aria-label="Instagram"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+            </div>
           </div>
         </div>
 

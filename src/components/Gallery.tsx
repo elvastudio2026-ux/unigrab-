@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { gallery } from '../data';
+import { Instagram } from 'lucide-react';
 
 export function Gallery() {
   return (
@@ -14,9 +15,15 @@ export function Gallery() {
             <h3 className="text-4xl md:text-5xl font-serif text-white mb-4 italic">Notre Univers.</h3>
             <p className="text-white/70 max-w-lg">Vivez l'expérience Unigrab à travers nos meilleurs moments et créations gourmandes.</p>
           </div>
-          <button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-medium backdrop-blur-md transition-all">
+          <a
+            href="https://www.instagram.com/unigrab_/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-medium backdrop-blur-md transition-all"
+          >
+            <Instagram className="w-5 h-5" />
             Suivez-nous sur Instagram
-          </button>
+          </a>
         </div>
 
         {/* Masonry Layout approximation */}
@@ -34,9 +41,13 @@ export function Gallery() {
               }`}
             >
               <img 
+                loading="lazy"
                 src={img.url} 
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=1200';
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <span className="text-white font-medium">{img.alt}</span>

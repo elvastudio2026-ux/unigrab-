@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import aboutImg from '../assets/images/unigrab_real_storefront_1782143154015.jpg';
 
 export function About() {
   return (
@@ -44,7 +45,14 @@ export function About() {
       
       {/* Decorative burger at bottom, cut off */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] md:w-[80%] max-w-4xl z-0">
-        <img src="/src/assets/images/unigrab_real_storefront_1782143154015.jpg" alt="Atmosphere" className="w-full object-cover rounded-t-[50%] border-[8px] border-uni-dark border-b-0 h-[400px] object-top opacity-50 sepia-[0.3]" />
+        <img 
+          src={aboutImg} 
+          alt="Atmosphere" 
+          className="w-full object-cover rounded-t-[50%] border-[8px] border-uni-dark border-b-0 h-[400px] object-top opacity-50 sepia-[0.3]"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop';
+          }}
+        />
       </div>
       
       {/* Another Cloud transition to bottom (reverse of hero) */}

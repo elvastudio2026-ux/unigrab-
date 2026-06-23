@@ -3,6 +3,11 @@ import { motion } from 'motion/react';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../CartContext';
 
+const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  e.currentTarget.src = 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1965&auto=format&fit=crop';
+  console.warn('Image failed to load, replacing with fallback:', e.currentTarget.alt);
+};
+
 import doubleMImg from '../assets/images/burger_double_m_1782135868565.jpg';
 import doubleCrispyImg from '../assets/images/burger_double_crispy_1782135884137.jpg';
 import tourelleImg from '../assets/images/burger_tourelle_1782135898343.jpg';
@@ -54,9 +59,9 @@ import saladeMexicaineImg from '../assets/images/salade_mexicaine_poulet_1782154
 import saladeNicoiseImg from '../assets/images/salade_nicoise_1782154028414.jpg';
 
 const salades = [
-  { name: "MEXICAINE POULET", price: "450 DA", desc: "Mélange croquant de maïs, haricots noirs, poulet grillé et crudités.", image: saladeMexicaineImg },
-  { name: "NIÇOISE", price: "450 DA", desc: "Thon, œufs durs, pommes de terre, haricots verts et olives noires.", image: saladeNicoiseImg },
-  { name: "CÉSAR", price: "450 DA", desc: "Laitue fraîche, poulet grillé, croûtons, parmesan et sauce césar.", image: saladeCesarImg },
+  { name: "MEXICAINE POULET", price: "450 DA", desc: "Mélange croquant de maïs, haricots noirs, poulet grillé et crudités.", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800" },
+  { name: "NIÇOISE", price: "450 DA", desc: "Thon, œufs durs, pommes de terre, haricots verts et olives noires.", image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&q=80&w=800" },
+  { name: "CÉSAR", price: "450 DA", desc: "Laitue fraîche, poulet grillé, croûtons, parmesan et sauce césar.", image: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80&w=800" },
 ];
 
 const makeYourSandwich = {
@@ -93,7 +98,7 @@ const AccurateLogo = ({ className = "" }) => (
 const offers = [
   { num: "01", formula: ["BURGER", "LOADED FRIES", "FREE DRINK"], image: offer1Img },
   { num: "02", formula: ["SANDWICH", "LOADED FRIES", "FREE DRINK"], image: offer2Img },
-  { num: "03", formula: ["PIZZA", "LOADED FRIES", "FREE DRINK"], image: offer3Img },
+  { num: "03", formula: ["SALADE", "LOADED FRIES", "FREE DRINK"], image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800" },
 ];
 
 const UnigrabFlag = () => (
@@ -218,7 +223,7 @@ export function Menu() {
                   >
                     <div className="w-48 h-32 md:w-64 md:h-48 relative mb-4 flex justify-center">
                       <UnigrabFlag />
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-2xl drop-shadow-2xl group-hover:scale-110 transition-transform duration-300" />
+                      <img loading="lazy" onError={handleImageError} src={item.image} alt={item.name} className="w-full h-full object-cover rounded-2xl drop-shadow-2xl group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <h4 className="font-display text-2xl text-white uppercase tracking-wide bg-black/50 px-4 py-1 rounded-full border border-white/10">{item.name}</h4>
                     <p className="text-sm text-uni-yellow font-bold mt-2 uppercase tracking-widest">{item.desc.join(", ")}</p>
@@ -245,7 +250,7 @@ export function Menu() {
                      <div className="w-full aspect-square relative mb-2 bg-white/5 rounded-xl border border-white/10">
                         <UnigrabFlag />
                         <div className="w-full h-full overflow-hidden rounded-xl">
-                          <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                          <img loading="lazy" onError={handleImageError} src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                         </div>
                      </div>
                      <h4 className="font-display text-[11px] md:text-sm text-white uppercase leading-tight mb-1">{item.name}</h4>
@@ -270,7 +275,7 @@ export function Menu() {
                       onClick={() => handleAdd(item.name, item.price, item.image)}
                     >
                        <div className="w-full aspect-[4/3] md:aspect-square relative mb-3 rounded-lg overflow-hidden group">
-                          <img src={item.image} alt={item.name} className="w-full h-full object-cover shadow-lg group-hover:scale-110 transition-transform duration-500" />
+                          <img loading="lazy" onError={handleImageError} src={item.image} alt={item.name} className="w-full h-full object-cover shadow-lg group-hover:scale-110 transition-transform duration-500" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
                           
                           {/* Logo Overlay on Cup */}
@@ -286,7 +291,7 @@ export function Menu() {
 
             {/* SALADES */}
             <div>
-               <h3 className="font-display text-3xl md:text-4xl text-white uppercase text-center mb-8 tracking-wider border-y-2 border-white/10 py-4"><span className="text-uni-green">SALADES & PIZZAS</span></h3>
+               <h3 className="font-display text-3xl md:text-4xl text-white uppercase text-center mb-8 tracking-wider border-y-2 border-white/10 py-4"><span className="text-uni-green">SALADES</span></h3>
                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {salades.map((item, idx) => (
                     <motion.div 
@@ -299,7 +304,7 @@ export function Menu() {
                       onClick={() => handleAdd(item.name, item.price, item.image)}
                     >
                       <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-lg">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover shadow-lg group-hover:scale-110 transition-transform duration-500" />
+                        <img loading="lazy" onError={handleImageError} src={item.image} alt={item.name} className="w-full h-full object-cover shadow-lg group-hover:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="flex flex-col flex-grow text-left">
                         <h4 className="font-display text-sm md:text-base text-white uppercase tracking-wider mb-1">{item.name}</h4>
@@ -343,7 +348,7 @@ export function Menu() {
 
                     <div className="flex gap-4 items-center">
                        <div className="w-1/3 flex items-center justify-center">
-                          <img src={offer.image} alt={`Offer ${offer.num}`} className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover shadow-lg group-hover:scale-105 transition-transform" />
+                          <img loading="lazy" onError={handleImageError} src={offer.image} alt={`Offer ${offer.num}`} className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover shadow-lg group-hover:scale-105 transition-transform" />
                        </div>
                        <div className="w-2/3 flex flex-col justify-center">
                          <div className="flex gap-2 items-center flex-wrap">

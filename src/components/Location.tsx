@@ -97,9 +97,13 @@ export function Location() {
           >
             {/* Embedded maps or photo representation */}
             <img 
+              loading="lazy"
               src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200" 
               alt="Localisation de Unigrab"
               className="w-full h-full object-cover grayscale opacity-80"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200';
+              }}
             />
             {/* Map styling elements overlay */}
             <div className="absolute inset-0 bg-uni-green/20 mix-blend-multiply" />

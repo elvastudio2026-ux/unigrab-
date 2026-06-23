@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { Menu } from './components/Menu';
 import { About } from './components/About';
 import { Reviews } from './components/Reviews';
+import { FAQ } from './components/FAQ';
 import { Location } from './components/Location';
 import { CartDrawer } from './components/CartDrawer';
 import { Footer } from './components/Footer';
@@ -19,6 +20,7 @@ export default function App() {
           <About />
           <Menu />
           <Reviews />
+          <FAQ />
           <Location />
         </main>
         <Footer />
