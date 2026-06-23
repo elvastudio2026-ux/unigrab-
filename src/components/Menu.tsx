@@ -59,9 +59,9 @@ import saladeMexicaineImg from '../assets/images/salade_mexicaine_poulet_1782154
 import saladeNicoiseImg from '../assets/images/salade_nicoise_1782154028414.jpg';
 
 const salades = [
-  { name: "MEXICAINE POULET", price: "450 DA", desc: "Mélange croquant de maïs, haricots noirs, poulet grillé et crudités.", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800" },
-  { name: "NIÇOISE", price: "450 DA", desc: "Thon, œufs durs, pommes de terre, haricots verts et olives noires.", image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&q=80&w=800" },
-  { name: "CÉSAR", price: "450 DA", desc: "Laitue fraîche, poulet grillé, croûtons, parmesan et sauce césar.", image: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80&w=800" },
+  { name: "MEXICAINE POULET", price: "450 DA", desc: "Poulet grillé, maïs, haricots noirs, tomates, oignons rouges, poivrons et croûtons sur lit de salade.", image: saladeMexicaineImg },
+  { name: "NICOISE", price: "450 DA", desc: "Thon, œufs durs, pommes de terre, haricots verts, carottes, tomates cerises et olives noires.", image: saladeNicoiseImg },
+  { name: "CESAR", price: "450 DA", desc: "Poulet grillé, œufs durs, tomates, radis, chou rouge, carottes râpées, olives noires et croûtons.", image: saladeCesarImg },
 ];
 
 const makeYourSandwich = {
@@ -279,7 +279,7 @@ export function Menu() {
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
                           
                           {/* Logo Overlay on Cup */}
-                          <AccurateLogo className="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-90 drop-shadow-md z-10 scale-75 md:scale-90 pointer-events-none transition-transform duration-500" />
+                          <AccurateLogo className="absolute top-[65%] left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-95 drop-shadow-xl z-20 scale-[0.6] md:scale-75 pointer-events-none transition-transform duration-500 group-hover:scale-[0.65] md:group-hover:scale-100" />
                        </div>
                        <h4 className="font-display text-sm md:text-base text-uni-yellow uppercase tracking-wider mb-2 px-1">{item.name}</h4>
                        <p className="text-[10px] md:text-xs text-white/80 mb-3 leading-snug px-1 flex-grow">{item.desc}</p>
@@ -292,7 +292,7 @@ export function Menu() {
             {/* SALADES */}
             <div>
                <h3 className="font-display text-3xl md:text-4xl text-white uppercase text-center mb-8 tracking-wider border-y-2 border-white/10 py-4"><span className="text-uni-green">SALADES</span></h3>
-               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   {salades.map((item, idx) => (
                     <motion.div 
                       initial={{ y: 20, opacity: 0 }}
@@ -300,16 +300,16 @@ export function Menu() {
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
                       key={item.name} 
-                      className="flex items-center gap-4 bg-white/5 p-3 md:p-4 rounded-xl border border-white/10 hover:border-uni-green cursor-pointer transition-colors group"
+                      className="flex flex-col items-center text-center group cursor-pointer"
                       onClick={() => handleAdd(item.name, item.price, item.image)}
                     >
-                      <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-lg">
-                        <img loading="lazy" onError={handleImageError} src={item.image} alt={item.name} className="w-full h-full object-cover shadow-lg group-hover:scale-110 transition-transform duration-500" />
+                      <div className="w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-square relative mb-4 rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+                        <img loading="lazy" onError={handleImageError} src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-50"></div>
                       </div>
-                      <div className="flex flex-col flex-grow text-left">
-                        <h4 className="font-display text-sm md:text-base text-white uppercase tracking-wider mb-1">{item.name}</h4>
-                        <p className="text-[10px] md:text-xs text-white/70 mb-2 leading-snug line-clamp-2">{item.desc}</p>
-                        <span className="font-display text-xs md:text-sm text-uni-green">{item.price}</span>
+                      <div className="bg-white/10 backdrop-blur-md border border-white/20 mt-[-40px] z-10 px-6 py-2 rounded-lg shadow-xl relative group-hover:-translate-y-2 transition-transform duration-300">
+                        <h4 className="font-display text-sm md:text-base lg:text-lg text-white uppercase tracking-wider">{item.name}</h4>
+                        <span className="font-display text-uni-yellow text-sm md:text-base mt-1 block">{item.price}</span>
                       </div>
                     </motion.div>
                   ))}
